@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lib64/libwebviewchromium_loader.so:system/lib64/libwebviewchromium_loader.so
 endif
 
-ifneq ($(filter arm arm64,$(ARCH)),)
+ifeq ($(ARCH),arm)
 $(shell mkdir -p out/target/product/u8950/system/app/webview/lib/arm/)
 $(shell cp -r $(LOCAL_PATH)/app/webview/lib/arm/libwebviewchromium.so out/target/product/u8950/system/app/webview/lib/arm/libwebviewchromium.so)
 endif
