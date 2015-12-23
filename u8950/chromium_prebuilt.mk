@@ -13,7 +13,6 @@
 # limitations under the License.
 
 LOCAL_PATH := prebuilts/chromium/u8950/
-ARCH := arm
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/app/webview/webview.apk:system/app/webview/webview.apk \
@@ -21,25 +20,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lib/libwebviewchromium_plat_support.so:system/lib/libwebviewchromium_plat_support.so \
     $(LOCAL_PATH)/lib/libwebviewchromium_loader.so:system/lib/libwebviewchromium_loader.so
 
-ifeq ($(ARCH),arm64)
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/lib64/libwebviewchromium.so:system/lib64/libwebviewchromium.so \
-    $(LOCAL_PATH)/lib64/libwebviewchromium_plat_support.so:system/lib64/libwebviewchromium_plat_support.so \
-    $(LOCAL_PATH)/lib64/libwebviewchromium_loader.so:system/lib64/libwebviewchromium_loader.so
-endif
-
-ifeq ($(ARCH),arm)
 $(shell mkdir -p out/target/product/u8950/system/app/webview/lib/arm/)
 $(shell cp -r $(LOCAL_PATH)/app/webview/lib/arm/libwebviewchromium.so out/target/product/u8950/system/app/webview/lib/arm/libwebviewchromium.so)
-endif
-
-ifeq ($(ARCH),arm64)
-$(shell mkdir -p out/target/product/u8950/system/app/webview/lib/arm64/)
-$(shell cp -r $(LOCAL_PATH)/app/webview/lib/arm64/libwebviewchromium.so out/target/product/u8950/system/app/webview/lib/arm64/libwebviewchromium.so)
-endif
-
-ifeq ($(ARCH),x86)
-$(shell mkdir -p out/target/product/u8950/system/app/webview/lib/x86/)
-$(shell cp -r $(LOCAL_PATH)/app/webview/lib/x86/libwebviewchromium.so out/target/product/u8950/system/app/webview/lib/x86/libwebviewchromium.so)
-endif
 
